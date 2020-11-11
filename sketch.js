@@ -97,13 +97,8 @@ function draw() {
   if(manRunning.isTouching(obstaclesGroup)){
     GameState=1;
   }
-if(score>=1080){
-  GameState=3;
-}
-  if(score===1000){
-w1.visible=true;
-w1.velocityX=-12;
-  }
+
+
 
   if(manRunning.isTouching(w1)){
     GameState=2;
@@ -120,20 +115,6 @@ BackGround.velocityX=0;
 BackGround.visible=false
 obstaclesGroup.destroyEach();
 }
-  if(GameState===3){
-    background("red");
-
-    textSize(40);
-    fill("blue");
-    text("you have missed the log retry",displayWidth/2-150,displayHeight/2+100);
-manRunning.remove();
-ak.visible=true;
-ak.addImage(ob);
-w1.remove();
-BackGround.velocityX=0;
-BackGround.visible=false
-obstaclesGroup.destroyEach();
-  }
 
   if(GameState===2){
     background("red");
@@ -147,6 +128,7 @@ obstaclesGroup.destroyEach();
     coinGroup.destroyEach();
   }
 spawnObstacles();
+
  console.log();
   drawSprites();
 
@@ -168,12 +150,13 @@ function spawnObstacles() {
     var rand = Math.round(random(1,3));
     switch(rand) {
       case 1: obstacle.addImage(obstacle1);
+      obstacle.scale=0.5;
               break;
       case 2: obstacle.addImage(obstacle2);
-    
+      obstacle.scale=0.4;
               break;
       case 3: obstacle.addImage(obstacle3);
-      obstacle.scale=0.5;
+      obstacle.scale=0.8;
               break;
       default: break;
     }
